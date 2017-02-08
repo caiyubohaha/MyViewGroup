@@ -134,6 +134,7 @@ public class MyGroupView extends ViewGroup {
             cr = cl+cWidth;
             cb = ct+cHeight;
             childView.layout(cl,ct,cr,cb);
+            
         }
 
     }
