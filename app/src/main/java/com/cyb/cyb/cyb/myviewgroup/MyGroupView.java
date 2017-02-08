@@ -12,8 +12,18 @@ import static android.view.View.MeasureSpec.getSize;
  */
 
 public class MyGroupView extends ViewGroup {
+
+
     public MyGroupView(Context context) {
         super(context);
+    }
+
+    public MyGroupView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public MyGroupView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
     }
 
     //为了支持margin直接使用系统的MarginLayoutParams//指定了MyViewgroup的LayoutParams

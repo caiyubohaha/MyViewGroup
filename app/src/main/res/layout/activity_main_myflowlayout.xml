@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cyb.cyb.cyb.myviewgroup.MainActivity">
+
+    <com.cyb.cyb.cyb.myviewgroup.MyFlowlayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/myFlowlayout">
+
+        <TextView
+            style="@style/tv_shap"
+            android:text="Welcome" />
+
+        <TextView
+            style="@style/tv_shap"
+            android:text="IT工程师" />
+
+        <TextView
+            style="@style/tv_shap"
+            android:text="学习ing" />
+
+        <TextView
+            style="@style/tv_shap"
+            android:text="恋爱ing" />
+
+        <TextView
+            style="@style/tv_shap"
+            android:text="挣钱ing" />
+
+        <TextView
+            style="@style/tv_shap"
+            android:text="努力ing" />
+
+        <TextView
+            style="@style/tv_shap"
+            android:text="I thick i can" />
+    </com.cyb.cyb.cyb.myviewgroup.MyFlowlayout>
+</LinearLayout>
