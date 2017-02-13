@@ -3,6 +3,7 @@ package com.cyb.cyb.cyb.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
@@ -53,6 +54,7 @@ public class VerticalLinearLayout extends ViewGroup {
      *记录当前页
      */
     private int currentPage=0;
+    int ii=0;
     private OnPageChangeListener mOnPageChangeListener;
     public VerticalLinearLayout(Context context) {
         super(context);
@@ -78,21 +80,33 @@ public class VerticalLinearLayout extends ViewGroup {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        //super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int count = getChildCount();
-        for (int i=0;i<count;i++){
+        /*for (int i=0;i<count;i++){
             View child = getChildAt(i);
-            measureChild(child,widthMeasureSpec,heightMeasureSpec);
-        }
+            measureChild(child,widthMeaureSpec,heightMeasureSpec);
+        }*///上下两个的代码功能一样
+        measureChildren(widthMeasureSpec,heightMeasureSpec);
+
+        //设置容器的高度
+        setMeasuredDimension(widthMeasureSpec,count*mScreenHeight);
+       /* MarginLayoutParams lp = (MarginLayoutParams) getLayoutParams();
+        lp.height = mScreenHeight*getChildCount();
+        setLayoutParams(lp);*/
+        Log.i("8888","onMeasure");
     }
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        Log.i("8888","onLayout"+ii);
         if (changed){
             int childcount = getChildCount();
-            MarginLayoutParams lp = (MarginLayoutParams) getLayoutParams();
-            lp.height = mScreenHeight*childcount;
-            setLayoutParams(lp);
+           /* if (ii<7) {
+                MarginLayoutParams lp = (MarginLayoutParams) getLayoutParams();
+                lp.height = mScreenHeight * (childcount+ii);
+                setLayoutParams(lp);
+                ii++;
+            }*/
 
             for (int i=0;i<childcount;i++){
                 View child = getChildAt(i);
@@ -126,11 +140,13 @@ public class VerticalLinearLayout extends ViewGroup {
                 int scrollY = getScrollY();
                 //已经到达顶端,下拉多少就往上滚多少
                 if (dy<0&&scrollY+dy<0){
-                    dy=-scrollY;
+                    //dy = -scrollY;
+                    dy=0;
                 }
                 //已经到达底部上拉多少就往下滚多少
                 if (dy>0&&scrollY+dy>getHeight()-mScreenHeight){
-                    dy=getHeight()-mScreenHeight-scrollY;
+                    //dy=getHeight()-mScreenHeight-scrollY;
+                    dy  = 0;
                 }
                 scrollBy(0,dy);
                 mLastY = y;
@@ -163,6 +179,8 @@ public class VerticalLinearLayout extends ViewGroup {
         return true;
     }
 
+
+
     /**
      * 是否想到上一页
      */
@@ -179,7 +197,6 @@ public class VerticalLinearLayout extends ViewGroup {
      * 是否想要到到下一页
      */
     private boolean wantScrollToNext(){
-        //return mScrollEnd-mScrollStart>mScreenHeight/2||Math.abs(getVelocity())>600;
         return mScrollStart<mScrollEnd;
     }
 
@@ -212,8 +229,8 @@ public class VerticalLinearLayout extends ViewGroup {
     public void computeScroll() {
         super.computeScroll();
         if (mScroller.computeScrollOffset()){
-            scrollTo(0,mScroller.getCurrY());
-            postInvalidate();
+                scrollTo(0,mScroller.getCurrY());
+                postInvalidate();
         }else{
             int position = getScrollY()/mScreenHeight;
             if (position!=currentPage){

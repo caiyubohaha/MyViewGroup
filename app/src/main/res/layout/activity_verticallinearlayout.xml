@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.cyb.cyb.cyb.myviewgroup.MainActivity">
 
-    <com.cyb.cyb.cyb.view.VerticalLinearLayout
+    <com.cyb.cyb.cyb.view.MyVerticalLinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -61,5 +61,5 @@
         </RelativeLayout>
 
 
-    </com.cyb.cyb.cyb.view.VerticalLinearLayout>
+    </com.cyb.cyb.cyb.view.MyVerticalLinearLayout>
 </LinearLayout>
