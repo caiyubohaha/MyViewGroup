@@ -55,7 +55,6 @@ public class MyVerticalLinearLayout extends ViewGroup {
         DisplayMetrics metrics = new DisplayMetrics();
         manager.getDefaultDisplay().getMetrics(metrics);
         mScreenHeight = metrics.heightPixels;
-        mVelocityTracker =VelocityTracker.obtain();
     }
 
     public MyVerticalLinearLayout(Context context, AttributeSet attrs, int defStyleAttr) {
